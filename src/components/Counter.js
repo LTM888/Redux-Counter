@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { increment, decrement } from '../actions';
 
 class Counter extends Component {
+
     incrementIfOdd = () => {
         // Stretch Problem: Implement an increment function that
         // only increments if the counter value is odd
@@ -18,12 +19,12 @@ class Counter extends Component {
         // Upon clicking these buttons, the count
         // should decrement or increment accordingly
         return (
-            <p>
+            <Div className='Counter'>
                 Clicked: {this.props.count} times
-                <button onClick={() => {/* Fill me in */ }}>
+                <button onClick={() => {this.newIncrement}}>
                     +
                 </button>
-                <button onClick={() => {/* Fill me in */ }}>
+                <button onClick={() => {this.newDecrement}}>
                     -
                 </button>
                  {/* Uncomment these button tags if you got
@@ -34,10 +35,10 @@ class Counter extends Component {
                 <button onClick={this.incrementAsync}>
                     Increment async
                 </button>  */}
-            </p>
+            </Div>
         );
     }
-}
+    
 
 // The mapStateToProps function specifies which portion of the
 // state tree this component needs to receive. In this case,
@@ -45,7 +46,8 @@ class Counter extends Component {
 // this component receives the whole state. In a more complex
 // redux application, though, it would receive only the relevant
 // parts it needs from the state object.
-const mapStateToProps = (state) => {
+const mapStateToProps = state  => {
+    console.log(state.count);
     return {
         count: state.count
     };
